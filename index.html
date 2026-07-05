@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="25050510/theme/game.css">
+	<meta name="robots" content="noindex, nofollow">
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500&display=swap" rel="stylesheet">
+	<title>Wacky Flip</title>
+	<meta name="description" content=""/>
+	<style type="text/css">
+		.jss1:before {
+			top: 0;
+			width: 100%;
+			filter: blur(16px);
+			height: 100%;
+			content: "";
+			display: block;
+			opacity: .5;
+			z-index: 0;
+			position: absolute;
+			background-size: cover;
+			background-image: url("25050510/loading.png")
+		}
+	</style> 
+	 
+	<script>
+		var buildUrl = "Build";
+		var versionFolder = "25050510/";
+		buildUrl = "./"+versionFolder + buildUrl;
+		var loaderUrl = buildUrl + "/wacky-flip-v25050510.loader.js";
+		var config = {
+			dataUrl: buildUrl + "/wacky-flip-v25050510.data.unityweb",
+			frameworkUrl: buildUrl + "/wacky-flip-v25050510.framework.js.unityweb",
+			codeUrl: buildUrl + "/wacky-flip-v25050510.wasm.unityweb",
+			streamingAssetsUrl: versionFolder+"StreamingAssets",
+			companyName: "azgames.io",
+			productName: "Wacky Flip",
+			productVersion: "25050510",
+			pubId: ""
+		};
+		config.gameId = "wacky-flip";
+		config.eventLog=true;
+		//config.buildAPI = "https://event.azgame.io/apiaz/event";
+		let currentDate = new Date();
+		let endLogDate = new Date("2025-05-27T03:10:20.302Z");
+		if(currentDate>endLogDate){
+			config.eventLog=false;
+		}
+		config.enableMoreGame="yes";
+		config.enablePromotion = true;
+		config.gdHost=isHostOnGD();
+		if(config.gdHost){
+			config.enableMoreGame="no";
+			config.enablePromotion = false;
+			config.eventLog = false;
+			config.sdkType = "gd";
+			config.gdGameId = "USE_GD_GAME_ID_CODE";
+		}else
+		function isHostOnGD() {
+			let domainParts = window.location.hostname.split('.');
+			let mainDomain = domainParts.slice(-2).join('.');
+			return (mainDomain=="gamedistribution.com");
+		}
+		
+	</script>
+	<script id="gmsoft-jssdk" src="lib/gmsoftsdk_v5.js"></script>
+</head>
+
+<body>
+<div id="unity-container" style="display: none;">
+	<canvas id="unity-canvas"></canvas> 
+</div>
+<div id="loadingBlock" style="">
+	<div class="jss31 jss34 jss1">
+	<div style="position: absolute; font-family: Arial, Helvetica, sans-serif;	bottom: 10px; right: 10px; font-size: 18px; color: #ffffff; opacity: 0.5;">25050510</div>
+		<div class="spinner"></div>
+		<div class="jss31 jss34 jss48" style="flex: 1 1 0%;">
+			<div class="jss32">
+				<div class="jss7 jss9 jss20 jss3">
+					<div class="jss125">
+						<div class="jss123">
+						 <img src="25050510/logo.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--PRODUCT_VERSION:25050510END-->
+		<div class="jss31 jss34" style="flex: 3 1 0%;">
+			<div class="jss32">
+				<div class="jss31 jss34 jss39 jss50 gameloader">
+					<div class="jss32">
+						<div class="gameloader-game-name">Wacky Flip</div>
+					</div>
+					<div class="jss32">
+						<div class="jss32 gameloader-logo">
+							<img id="game-logo" src="25050510/loading.png">
+						</div>
+					</div>
+					<div class="jss32">
+						<div>
+							<div class="gameloader-progressbar">
+								<div class="gameloader-progressbar-progress" id="progress_fill"
+										 style="width: 0%;"></div>
+							</div>
+							<div class="gameloader-progress-info">Game Loading...</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<script> 
+		var progressElement = document.getElementById('progress_fill');
+		var container =	document.getElementById("unity-container");
+		var canvas =	document.getElementById("unity-canvas");
+		var loadingBar = document.querySelector("#loadingBlock");
+		var progressBarFull = document.querySelector("#progress_fill");
+		var progress_text = document.querySelector(".gameloader-progress-info");
+		let text_percent = "";
+		var script = document.createElement("script");
+		script.src = loaderUrl;
+		script.onload = () => {
+		createUnityInstance(canvas, config, (progress) => {
+			progressElement.style.width = 100 * progress + "%";
+			text_percent = "Downloading file: " + Math.round(progress*100) + "%";
+			progress_text.innerText = text_percent;
+			if (progress >= 99) {
+				progress_text.innerText = "Game Loading ...";
+			}
+		}).then((unityInstance) => {
+			window.unityInstance = unityInstance;
+			setTimeout(function() {
+				loadingBar.style.display = "none";
+				window.focus();
+			}, 2000);
+			container.style.display = "block";
+		}).catch((message) => {
+			alert(message);
+		});
+		};
+		document.body.appendChild(script);
+	</script>
+	<script src="firebasejs/10.9.0/firebase-app-compat.js"></script>
+	<script src="firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+	<script src="firebasejs/10.9.0/firebase-auth-compat.js"></script>
+	<script src="firebasejs/10.9.0/firebase-analytics-compat.js"></script>
+	<script type="module">
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+ apiKey: "AIzaSyA-XlKotUiixMmEURZ_-ZrrcxdXToTH2x4",
+ authDomain: "wacky-flip.firebaseapp.com",
+ projectId: "wacky-flip",
+ storageBucket: "wacky-flip.firebasestorage.app",
+ messagingSenderId: "387398090122",
+ appId: "1:387398090122:web:01f48a75a720d752f75c73",
+ measurementId: "G-G16KDP39XB"
+};
+		if(firebaseConfig ){
+			window.dataLayer = window.dataLayer || [];
+			window.gtag = function () { window.dataLayer.push(arguments); }
+
+			window.gtag("config", firebaseConfig.measurementId, {
+			  cookie_domain: window.location.hostname,
+			  cookie_flags: "SameSite=None;Secure",
+			});
+			// Initialize Firebase
+			const app = firebase.initializeApp(firebaseConfig);
+			//const auth = getAuth(app);
+		}
+	</script>
+	<script>
+		function firebaseSetUserProperties(props) {
+			firebase.analytics().setUserProperties(props);
+		}
+		function firebaseLogEvent(event_name) {
+			firebase.analytics().logEvent(event_name);
+		}
+		function firebaseLogEventParameter(event_name, event_param) {
+			firebase.analytics().logEvent(event_name, event_param);
+		}
+		function deleteCookie(name) {
+			const domainParts = location.hostname.split('.');
+			let domain = domainParts.slice(-2).join('.'); // e.g., example.com
+
+			document.cookie = `${name}=; Max-Age=0; path=/;`;
+			document.cookie = `${name}=; Max-Age=0; path=/; domain=.${domain};`;
+			document.cookie = `${name}=; Max-Age=0; path=/; domain=.${location.hostname};`;
+			document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+		}
+		(function trimGACookies(keepCount = 25) {
+			
+		const cookies = document.cookie.split(';');
+		  const gaCookies = cookies
+			.map(c => c.trim())
+			.filter(c => c.startsWith('_ga_'));
+			console.log(`gaCookies ${gaCookies}`);
+		console.log(`gaCookies ${gaCookies.length}`);
+		  // Sort by modification time in the cookie value if possible
+		  const sortedGa = gaCookies.sort((a, b) => {
+			const extractTime = (val) => {
+			  const match = val.match(/t(\d{10})/); // extract t{timestamp} from value
+			  return match ? parseInt(match[1]) : 0;
+			};
+			return extractTime(b) - extractTime(a);
+		  });
+
+		  // Keep the newest N, remove the rest
+		  const toDelete = sortedGa.slice(keepCount);
+
+		  toDelete.forEach(cookieStr => {
+			const name = cookieStr.split('=')[0];
+			deleteCookie(name);
+		  });
+
+		  console.log(`Kept ${keepCount}, deleted ${toDelete.length} _ga_* cookies.`);
+		})();
+
+	</script>
+	
+<script defer src="v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"7aa564ef6af14bc2822f8b6f902775d5","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>	
+</html>
+
